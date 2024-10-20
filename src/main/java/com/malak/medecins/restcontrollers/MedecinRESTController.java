@@ -22,25 +22,25 @@ public class MedecinRESTController {
 	@Autowired
 	MedecinService medecinService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(path="all",method = RequestMethod.GET)
 	public List<Medecin> getAllMedecins() {
 	return medecinService.getAllMedecins();
 	}
-	@RequestMapping(value="/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/getbyid/{id}",method = RequestMethod.GET)
 	public Medecin getMedecinById(@PathVariable("id") Long id) {
 	return medecinService.getMedecin(id);
 	 }
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(path="/addmed",method = RequestMethod.POST)
 	public Medecin createMedecin(@RequestBody Medecin medecin) {
 	return medecinService.saveMedecin(medecin);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(path="/updatemed",method = RequestMethod.PUT)
 	public Medecin updateMedecin(@RequestBody Medecin medecin) {
 	return medecinService.updateMedecin(medecin);
 	}
 	
-	@RequestMapping(value="/{id}",method = RequestMethod.DELETE)
+	@RequestMapping(value="/delmed/{id}",method = RequestMethod.DELETE)
 	public void deleteMedecin(@PathVariable("id") Long id)
 	{
 		medecinService.deleteMedecinById(id);
